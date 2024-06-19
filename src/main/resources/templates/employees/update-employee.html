@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Employee</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h2 class="my-4">Update Employee Information</h2>
+
+  <!-- Employee update form -->
+  <form th:action="@{/employees/edit/{id}(id=${employee.id})}" method="post" th:object="${employee}" class="my-4">
+    <input type="hidden" th:field="*{id}">
+
+    <div class="form-group">
+      <label for="maNv">Employee ID:</label>
+      <input type="text" id="maNv" name="maNv" th:field="*{maNv}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="tenNv">Employee Name:</label>
+      <input type="text" id="tenNv" name="tenNv" th:field="*{tenNv}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phai">Gender:</label>
+      <select id="phai" name="phai" th:field="*{phai}" class="form-control">
+        <option value="NAM" th:selected="${employee.phai == 'NAM'}">Male</option>
+        <option value="NU" th:selected="${employee.phai == 'NU'}">Female</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="noiSinh">Place of Birth:</label>
+      <input type="text" id="noiSinh" name="noiSinh" th:field="*{noiSinh}" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="luong">Salary:</label>
+      <input type="text" id="luong" name="luong" th:field="*{luong}" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+<!-- Include Bootstrap JS and any necessary libraries if needed -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js" integrity="sha384-EV2APi52klKRVzFkB0zI5kzy5qfJl27BU+AYv5A4qFif+dqKxRtjOM+aOLBd8FJo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

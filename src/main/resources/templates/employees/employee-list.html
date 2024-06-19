@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<h1>ĐỖ DUY HÙNG - 2180605499 </h1>
+<div class="container mt-5">
+    <h2>Employee List</h2>
+    <a href="/employees/add" class="btn btn-success">Add Employee</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Birthplace</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.maNv}"></td>
+            <td th:text="${employee.tenNv}"></td>
+            <td>
+                <img th:if="${employee.phai == 'NU'}" src="/images/woman.jpg" alt="Woman" style="width: 30px; height: 30px;">
+                <img th:if="${employee.phai == 'NAM'}" src="/images/man.jpg" alt="Man" style="width: 30px; height: 30px;">
+            </td>
+            <td th:text="${employee.noiSinh}"></td>
+            <td th:text="${employee.department.tenPhong}"></td>
+            <td th:text="${employee.luong}"></td>
+            <td>
+                <a th:href="@{/employees/edit/{id}(id=${employee.id})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/employees/delete/{id}(id=${employee.id})}" class="btn btn-danger btn-sm"onclick="return confirm('Are you sure?')">Delete</a>
+                <a th:href="@{/employees/detail/{id}(id=${employee.id})}" class="btn btn-info btn-sm">Detail</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
